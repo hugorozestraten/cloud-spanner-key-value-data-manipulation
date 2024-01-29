@@ -19,5 +19,36 @@ pip3 install google-cloud-spanner
 
 
 
+## Create table and Index
+
+### spanner_json_ddl.py
+
+#### Usage:
+
+python3 spanner_json_ddl.py instance_id database_id table_name "key_data_type" *(STRING(n),BYTE(n),INT64)* extra_attribute_index "extra_attribute_data_type" 
+
+#### Example:
+
+python3 spanner_json_ddl.py instance1 test mytable1 "string(50)" attribu2 "string(100)"
+
+*output example*
+
+```result
+Waiting for operation to complete...
+Created table mytable1 on database test - instance instance1, Index: Y
+Waiting for operation to complete...
+Created index Index_mytable1_attribu2 on table mytable1 on database test - instance instance1
+```
+
+Every table will be created with a Key "tbkey" that can be STRING(n), BYTE(n) or INT64, the data type should be put in double quote as parameters
+
+If extra_attribute_index and extra_attribute_data_type are given, then a column with the attribute name is created. 
+After the table creation one index is created for the column created as extra_attribute_index.
+
+
+
+
+
+
 
 
