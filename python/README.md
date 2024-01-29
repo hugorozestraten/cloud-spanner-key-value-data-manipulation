@@ -40,7 +40,9 @@ Waiting for operation to complete...
 Created index Index_mytable1_attribu2 on table mytable1 on database test - instance instance1
 ```
 
-Every table will be created with a Key "tbkey" that can be STRING(n), BYTE(n) or INT64, the data type should be put in double quote as parameters
+Every table will be created with:
+- a Key "tbkey" that can be STRING(n), BYTE(n) or INT64, the data type should be put in double quote as parameters
+- a Value column of JSON data type
 
 If extra_attribute_index and extra_attribute_data_type are given, then a column with the attribute name is created. 
 After the table creation one index is created for the column created as extra_attribute_index.
