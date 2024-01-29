@@ -7,7 +7,7 @@ In order to run this code snipets:
 2. Create a Database in your Spanner instance.
    
 3. Create a Cloud Engine VM ( Virtual Machine ) in your GCP environment, in the same region of your Cloud Spanner.
-4. 
+
 5. Add the permission for your VM to create tables and perform operations on Google Cloud Spanner . 
 
 6. Have the Cloud Spanner python library installed 
