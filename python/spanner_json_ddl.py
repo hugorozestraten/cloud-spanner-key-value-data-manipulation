@@ -2,6 +2,11 @@
 # Created by Hugo Rozestraten
 # Google Cloud Consulting - PSO 
 
+# Use arguments: instance_id database_id table_name key_data_type extra_attribute attribute_data_type"
+
+# Example:
+# python3 spanner_json_ddl.py instance1 dbtest1 mytable1 "string(50)" attribu2 "string(100)"
+
 #import spanner library, datetime to control execution time and sys to read arguments
 from google.cloud import spanner
 import datetime
