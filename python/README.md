@@ -54,6 +54,8 @@ After the table creation one index is created for the column created as extra_at
 
 ## DML / Insert records
 
+
+### dml (directory)
 ### spanner_json_line_insert.py / spanner_json_dml_auto.sh
 
 You can run Python code directly or call it for Parallel Execution with the ShellScript
@@ -135,6 +137,8 @@ cat p_80/*
 
 # Batch Insert records
 
+
+### batch_insert (directory)
 ### spanner_json_batch_insert.py / spanner_json_batch_insert_auto.sh
 
 You can run Python code directly or call it for Parallel Execution with the ShellScript
@@ -186,6 +190,8 @@ Although the key is composite in the case of STRING data type.
 
 # Query records 
 
+
+### query (directory)
 ### spanner_json_query_record.py / spanner_json_query_record_auto.sh
 
 You can run Python code directly or call it for Parallel Execution with the ShellScript
@@ -227,6 +233,7 @@ Check the total.out file to see all executions results
 2024-02-01 18:45:18 p_10 10000 records read 3083.32 records per second
 2024-02-01 18:46:02 p_80 80000 records read 8251.18 records per second
 ```
+
 
 
 
