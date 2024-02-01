@@ -80,35 +80,37 @@ def get_batch_sql(x,positional_number):
         batch_sql_values.append(record)
     return batch_sql_values
 
+if __name__ == "__main__":
+    sum=0
+    position=inicial_num
+    # start measuring time
+    inicial=datetime.datetime.now()
+    # create a loop for the number or runs (num_of_runs)
+    for n in range(num_of_runs):  
+        # create a batch of records (num_of_records) and Write it to Spanner with num_of_records#
+        with database.batch() as batch:
+            if index=='Y':
+                batch.insert(
+                    table=table_name,
+                    columns=("tbkey", "Value",extra_attribute),
+                    values=get_batch_sql(num_of_records,position)
+                ) 
+            else:    
+                batch.insert(
+                    table=table_name,
+                    columns=("tbkey", "Value"),
+                    values=get_batch_sql(num_of_records,position)
+                )   
+            sum+=num_of_records
+            position+=num_of_records
 
-sum=0
-position=inicial_num
-inicial=datetime.datetime.now()
-for n in range(num_of_runs):  
-    with database.batch() as batch:
-        if index=='Y':
-            batch.insert(
-                table=table_name,
-                columns=("tbkey", "Value",extra_attribute),
-                values=get_batch_sql(num_of_records,position)
-            ) 
-        else:    
-            batch.insert(
-                table=table_name,
-                columns=("tbkey", "Value"),
-                values=get_batch_sql(num_of_records,position)
-            )   
-        sum+=num_of_records
-        position+=num_of_records
-
-
-final=datetime.datetime.now()
-delta=final-inicial
-if delta.seconds==0:
-    diff=1
-else:
-    diff=delta.seconds
-rps=sum/diff
-print(f'rows inserted: {sum} in {diff} seconds at {rps} records per second')
-
+    # end measuring time
+    final=datetime.datetime.now()
+    delta=final-inicial
+    if delta.seconds==0:
+        diff=1
+    else:
+        diff=delta.seconds
+    rps=sum/diff
+    print(f'rows inserted: {sum} in {diff} seconds at {rps} records per second')
 
