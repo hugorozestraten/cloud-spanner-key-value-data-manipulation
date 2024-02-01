@@ -42,6 +42,9 @@ do
     initial=$(($initial+$records))
 done
 
+echo "**** wait for all processes to finish ****"
+
+#wait for all processes to finish
 wait $PIDs
 
 
@@ -49,4 +52,11 @@ c=0.0
 a=`cat $path/* | grep "records per second" | awk '{print $8}'`
 for b in $a; do c=`awk "BEGIN{ print $b + $c}"`; done
 datenow=`date '+%Y-%m-%d %H:%M:%S'`
-echo $path $datenow $initial_records $c records per second >>total.out
+if [ ${c%.*} -eq 0 ]
+then 
+    echo there was an error to insert records with the arguments, check the output files in $path 
+else 
+    echo $path $datenow $(($initial-$startnum)) records inserted $c records per second >>total.out
+    tail -1 total.out
+fi
+
