@@ -181,4 +181,48 @@ Although the key is composite in the case of STRING data type.
 
 
 
+# Query records 
+
+### spanner_json_query_record.py / spanner_json_query_record_auto.sh
+
+You can run Python code directly or call it for Parallel Execution with the ShellScript
+
+
+
+#### Python Usage ( single process ):
+
+
+python3 spanner_json_query_record.py instance database table table_records_range initial_offset limit
+
+
+*table_records_range* = limit the number of records to take as sample for keys to read 
+
+*initial_offset* = How many records to skip from the query, to start considering keys to query
+
+*limit* = number of key to read for each run
+
+
+
+#### Query record ShellScript automation ( parallel processing ):
+
+#### Usage:
+ ./spanner_json_query_record_auto.sh instance database table table_records_range initial_offset limit parallel
+
+*parallel* = the number of parallel processing to run 
+
+#### Retrieve results
+
+
+Check the total.out file to see all executions results
+```total.out
+2024-02-01 17:55:23 p_10 10000 records read 3749.98 records per second
+2024-02-01 17:55:48 p_10 10000 records read 3583.31 records per second
+2024-02-01 17:56:30 p_20 20000 records read 6833.29 records per second
+2024-02-01 18:45:18 p_10 10000 records read 3083.32 records per second
+2024-02-01 18:46:02 p_80 80000 records read 8251.18 records per second
+```
+
+
+
+
 
