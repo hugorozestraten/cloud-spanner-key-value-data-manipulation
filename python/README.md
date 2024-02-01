@@ -83,11 +83,13 @@ If Table Key is a INT64 the key will be the exactly inicial_num(Sequence) to the
  ./spanner_json_dml_auto.sh test test mytable1 STRING 600000 80 2000 attribu2 STRING 
 ```
 
-
 ( This will generate random data into Spanner table_name )
 
 In the example will start with number 600000 for key (if STRING a random string will be put as a prefix ) 
 80 Parallel processes will be triggered
+
+**You should increase the StartNumber for each run to avoid attempt to insert the same row twice**
+
 
 An index random value type STRING will be generate, in this case the table need to have the exact attribu2 STRING - created before
 I
@@ -131,8 +133,47 @@ cat p_80/*
 
 
 
+# Batch Insert records
+
+### spanner_json_batch_insert.py / spanner_json_batch_insert_auto.sh
+
+You can run Python code directly or call it for Parallel Execution with the ShellScript
 
 
+#### Python Usage ( single process ):
+
+
+python3 spanner_json_batch_insert.py instance_id database_id table_name key_data_type initial_num num_of_records num_of_runs extra_attribute(optional) attribute_data_type(optional)
+
+
+*initial_num* = is the number to use as reference for the key and will be increase in sequence + a random Prefix in case of STRING data type
+*num_of_records* = number of records for EACH BATCH
+*num_of_runs* = number of executions of subsequent Batches
+
+
+Although the key is composite in the case of STRING data type.
+**You should increase the initial_num for each run, for more than last number inserted, to avoid attempt to insert the same row twice**
+
+
+#### Batch Insert ShellScript automation ( parallel processing ):
+
+#### Usage:
+ ./spanner_json_batch_insert_auto.sh instance database table KeyType initial_num batch_records num_of_runs ParallelProcess ExtraAttribute DataType
+
+
+#### Retrieve results
+
+ Check the total.out file to see all executions results
+```total.out
+2024-02-01 17:29:30 p_40 1200000 records 66450.1 records per second
+2024-02-01 17:30:02 p_30 900000 records 65770.1 records per second
+2024-02-01 17:30:37 p_30 900000 records 69423.3 records per second
+2024-02-01 17:34:11 p_40 1200000 records 57857.8 records per second
+2024-02-01 18:08:54 p_40 1200000 records 55714.1 records per second
+2024-02-01 18:10:52 p_40 1200000 records 53714.1 records per second
+2024-02-01 18:12:38 p_50 1500000 records 34443.4 records per second
+2024-02-01 18:13:41 p_50 1500000 records 51352.7 records per second
+```
 
 
 
