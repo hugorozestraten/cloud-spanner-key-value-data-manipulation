@@ -147,8 +147,11 @@ python3 spanner_json_batch_insert.py instance_id database_id table_name key_data
 
 
 *initial_num* = is the number to use as reference for the key and will be increase in sequence + a random Prefix in case of STRING data type
+
 *num_of_records* = number of records for EACH BATCH
+
 *num_of_runs* = number of executions of subsequent Batches
+
 
 
 Although the key is composite in the case of STRING data type.
