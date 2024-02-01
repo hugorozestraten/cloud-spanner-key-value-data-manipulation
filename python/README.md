@@ -96,7 +96,7 @@ If Table Key is a STRING the key will be composed by a random String value + the
 
 If Table Key is a INT64 the key will be the exactly inicial_num(Sequence) to the number of records
 
-### Check python parallel execution
+### In another terminal console, check python parallel execution
 ```console
 top
 ```
@@ -105,7 +105,23 @@ top
 
 
 ### Retrieve results
- Results will be in the directory p_(Parallel#)
+
+ Check the total.out file to see all executions results
+
+```console
+cat total.out
+```
+```results
+p_60 2024-02-01 17:17:25 120000 records inserted 1341.82 records per second
+p_20 2024-02-01 17:24:21 20000 records inserted 664.461 records per second
+p_50 2024-02-01 17:36:22 50000 records inserted 1179.91 records per second
+p_80 2024-02-01 18:01:52 160000 records inserted 658.395 records per second
+p_30 2024-02-01 18:03:49 60000 records inserted 890.926 records per second
+p_40 2024-02-01 18:05:31 80000 records inserted 1111.81 records per second
+```
+
+
+ For each execution, the detailed results will be in the directory p_(Parallel#)
  $cat p_80/*
 
 ```console
