@@ -74,11 +74,11 @@ If Table Key is a INT64 the key will be the exactly inicial_num(Sequence) to the
 
 #### ShellScript automation ( parallel processing ):
 
-# Usage:
-# ./spanner_json_dml_auto.sh instance database table KeyType StartNumber ParallelProcess RecordsPerRun ExtraAttribute(Optional) DataType(Optional)
+#### Usage:
+ ./spanner_json_dml_auto.sh instance database table KeyType StartNumber ParallelProcess RecordsPerRun ExtraAttribute(Optional) ExtraAttributeDataType(Optional)
 
 
-# Example:
+### Example:
 ```console
  ./spanner_json_dml_auto.sh test test mytable1 STRING 600000 80 2000 attribu2 STRING 
 ```
@@ -96,7 +96,22 @@ If Table Key is a STRING the key will be composed by a random String value + the
 
 If Table Key is a INT64 the key will be the exactly inicial_num(Sequence) to the number of records
 
+### Check python parallel execution
+```console
+top
+```
 
+
+
+
+### Retrieve results
+ Results will be in the directory p_(Parallel#)
+ $cat p_80/*
+
+```console
+cat p_80/*
+```
+![Alt text](../images/p_80_dml_insert_cat.jpg?raw=true "cat p_80")
 
 
 
