@@ -163,6 +163,8 @@ Although the key is composite in the case of STRING data type.
 #### Usage:
  ./spanner_json_batch_insert_auto.sh instance database table KeyType initial_num batch_records num_of_runs ParallelProcess ExtraAttribute DataType
 
+#### Example:
+ ./spanner_json_batch_insert_auto.sh test test mytable1 STRING 2200000000 300 100 50 attribu2 STRING
 
 #### Retrieve results
 
@@ -176,6 +178,7 @@ Although the key is composite in the case of STRING data type.
 2024-02-01 18:10:52 p_40 1200000 records 53714.1 records per second
 2024-02-01 18:12:38 p_50 1500000 records 34443.4 records per second
 2024-02-01 18:13:41 p_50 1500000 records 51352.7 records per second
+2024-02-01 18:49:28 p_50 1500000 records 62504.3 records per second
 ```
 
 
@@ -207,6 +210,9 @@ python3 spanner_json_query_record.py instance database table table_records_range
 
 #### Usage:
  ./spanner_json_query_record_auto.sh instance database table table_records_range initial_offset limit parallel
+
+#### Example:
+./spanner_json_query_record_auto.sh test test mytable1 1232323000000 3000 1000 80
 
 *parallel* = the number of parallel processing to run 
 
