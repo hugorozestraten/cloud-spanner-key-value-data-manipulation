@@ -40,7 +40,7 @@ num=0
 sql=''
 
 
-# check for extra attribute to create index
+# check for extra attribute to create index value
 if len(sys.argv) >= 8:
     index='Y'
     assert isinstance(sys.argv[7], str),assertion_error
@@ -72,7 +72,7 @@ def get_sql(x):
     else:
         extra_attribute_definition=''
         extra_attribute_value=''
-    b=random.choice(['one', 'two', 'three', 'four', 'five'])
+    b=random.choice(['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty'])
     l={
                             "items": None,
                             "classification": b,
@@ -103,6 +103,7 @@ def insert_venues(transaction):
 
 if __name__ == "__main__":
     inicial=datetime.datetime.now()
+    # insert each record as a transaction to emulate several users executing inserts
     for a in range(inicial_num,end_num+1):
         sql=get_sql(a)
         #print(sql)
