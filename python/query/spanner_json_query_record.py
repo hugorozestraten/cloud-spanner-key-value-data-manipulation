@@ -46,7 +46,9 @@ def query_key(key):
 
     with database.snapshot() as snapshot:
         results = snapshot.execute_sql(
-            f"SELECT * FROM {table_name} where tbkey = '{key}'"
+            f"SELECT * FROM {table_name} where tbkey = @key",
+            params={"key": key},
+            param_types={"key": spanner.param_types.STRING},
         )
 
     return results
